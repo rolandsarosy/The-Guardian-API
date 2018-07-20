@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/primary_text"
+            android:id="@+id/article_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -20,7 +20,7 @@
             android:layout_marginTop="24dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="#DE000000"
-            app:layout_constraintBottom_toTopOf="@+id/sub_text"
+            app:layout_constraintBottom_toTopOf="@+id/article_category"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,21 +28,21 @@
             tools:text="Novichok poisonings: victim Charlie Rowley released from hospital" />
 
         <TextView
-            android:id="@+id/sub_text"
+            android:id="@+id/article_category"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="#8A000000"
-            app:layout_constraintBottom_toTopOf="@+id/supporting_text"
+            app:layout_constraintBottom_toTopOf="@+id/article_body"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/primary_text"
+            app:layout_constraintTop_toBottomOf="@+id/article_name"
             tools:text="UK news" />
 
         <TextView
-            android:id="@+id/supporting_text"
+            android:id="@+id/article_body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -51,15 +51,15 @@
             android:lineSpacingExtra="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="#DE000000"
-            app:layout_constraintBottom_toTopOf="@+id/action_button_1"
+            app:layout_constraintBottom_toTopOf="@+id/article_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sub_text"
+            app:layout_constraintTop_toBottomOf="@+id/article_category"
             tools:text="A Wiltshire man poisoned with a military-grade nerve agent has been discharged from hospital 12 days after his partner died after exposure... "/>
 
         <Button
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:id="@+id/action_button_1"
+            android:id="@+id/article_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -68,7 +68,7 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:textColor="#DE000000"
-            app:layout_constraintTop_toBottomOf="@+id/supporting_text"
+            app:layout_constraintTop_toBottomOf="@+id/article_body"
             android:text="@string/list_item_label_learn_more"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>

@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">The Guardian API</string>
+
+    <!-- Button label in a single list item [CHARLIMIT=13]-->
+    <string name="list_item_label_learn_more">learn more</string>
 </resources>

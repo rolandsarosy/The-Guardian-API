@@ -1,8 +1,9 @@
-package cloud.augmentum.theguardianapi;
+package cloud.augmentum.theguardianapi.ui;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import cloud.augmentum.theguardianapi.R;
 
 public class CatalogActivity extends AppCompatActivity {
 

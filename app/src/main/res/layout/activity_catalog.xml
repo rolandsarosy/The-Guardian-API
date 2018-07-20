@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        app:fabAlignmentMode="end"
         app:backgroundTint="@color/primaryDarkColor"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

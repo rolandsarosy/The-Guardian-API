@@ -1,33 +1,24 @@
 package cloud.augmentum.theguardianapi.api.model;
 
-/**
- * The News class holds a single news instance and its relevant information
- */
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class News {
 
-    // The name of the article
-    private String webTitle;
+    @SerializedName("response")
+    @Expose
+    private Response response;
 
-    // The category of the article
-    private String sectionName;
-
-    // The website URL of the article
-    private String webUrl;
-
-    // The body of the article
-    private String bodyTextSummary;
-
-    // Getter methods for this class
-    public String getName(){
-        return webTitle;
+    public Response getResponse() {
+        return response;
     }
-    public String getCategory(){
-        return sectionName;
+
+    public void setResponse(Response response) {
+        this.response = response;
     }
-    public String getUrl(){
-        return webUrl;
-    }
-    public String getBody(){
-        return bodyTextSummary;
+
+    public News withResponse(Response response) {
+        this.response = response;
+        return this;
     }
 }

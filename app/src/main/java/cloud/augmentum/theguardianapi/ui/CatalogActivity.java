@@ -10,6 +10,7 @@ import java.util.List;
 import androidx.appcompat.app.AppCompatActivity;
 import cloud.augmentum.theguardianapi.R;
 import cloud.augmentum.theguardianapi.api.model.News;
+import cloud.augmentum.theguardianapi.api.model.Result;
 import cloud.augmentum.theguardianapi.api.service.NewsClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,7 +20,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CatalogActivity extends AppCompatActivity {
 
-    public static final int MAX_BODY_LENGTH = 135;
     public static final String API_KEY = "324ed141-8ecd-4f25-be0a-872bd02c6a8a";
     public static final String API_REQUEST_TYPE = "article";
     public static final String API_BLOCK_TYPE = "body";
@@ -38,19 +38,21 @@ public class CatalogActivity extends AppCompatActivity {
         Retrofit retrofit = builder.build();
 
         NewsClient client = retrofit.create(NewsClient.class);
-        Call<List<News>> call = client.getNews(API_KEY, API_REQUEST_TYPE, API_BLOCK_TYPE);
+        Call<News> call = client.getBaseJson(API_KEY, API_REQUEST_TYPE, API_BLOCK_TYPE);
 
-        call.enqueue(new Callback<List<News>>() {
+        call.enqueue(new Callback<News>() {
             @Override
-            public void onResponse(Call<List<News>> call, Response<List<News>> response) {
-                List<News> news = response.body();
+            public void onResponse(Call<News> call, Response<News> response) {
+                List<Result> results = response.body().getResponse().getResults();
 
-                listView.setAdapter(new NewsAdapter(CatalogActivity.this, news));
+                listView.setAdapter(new NewsAdapter(CatalogActivity.this, results));
+
+                Toast.makeText(CatalogActivity.this, "it worked?", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onFailure(Call<List<News>> call, Throwable t) {
-                Toast.makeText(CatalogActivity.this, "fuck :|", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<News> call, Throwable t) {
+                Toast.makeText(CatalogActivity.this, "fuck", Toast.LENGTH_SHORT).show();
                 Log.e("The throwable is", t.toString());
             }
         });

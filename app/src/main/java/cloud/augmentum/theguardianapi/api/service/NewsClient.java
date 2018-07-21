@@ -10,7 +10,7 @@ import retrofit2.http.Query;
 public interface NewsClient {
 
     @GET("search")
-    Call<List<News>> getNews(
+    Call<News> getBaseJson(
             // API key should always be constant
             @Query("api-key") String apiKey,
             // Type should always be "Article" for the purpose of this demo

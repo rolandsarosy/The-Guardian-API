@@ -12,13 +12,15 @@ import java.util.List;
 
 import cloud.augmentum.theguardianapi.R;
 import cloud.augmentum.theguardianapi.api.model.News;
+import cloud.augmentum.theguardianapi.api.model.Response;
+import cloud.augmentum.theguardianapi.api.model.Result;
 
-public class NewsAdapter extends ArrayAdapter<News> {
+public class NewsAdapter extends ArrayAdapter<Result> {
 
     private Context mContext;
-    private List<News> newsList;
+    private List<Result> newsList;
 
-    public NewsAdapter(Context context, List<News> list){
+    public NewsAdapter(Context context, List<Result> list){
         super(context, 0, list);
         mContext = context;
         newsList = list;
@@ -32,20 +34,15 @@ public class NewsAdapter extends ArrayAdapter<News> {
             listItem = LayoutInflater.from(mContext).inflate(R.layout.list_item, parent, false);
         }
 
-        News currentNewsItem = newsList.get(position);
+        Result currentNews = newsList.get(position);
 
         TextView name = listItem.findViewById(R.id.article_name);
         TextView category = listItem.findViewById(R.id.article_category);
-        TextView body = listItem.findViewById(R.id.article_body);
 
-        String bodyRaw = currentNewsItem.getBody();
-        String bodyString = bodyRaw.substring(0, Math.min(bodyRaw.length(), CatalogActivity.MAX_BODY_LENGTH));
-        body.setText(bodyString);
+        String nameString = currentNews.getWebTitle();
+        String categoryString = currentNews.getSectionName();
 
-        String nameString = currentNewsItem.getName();
         name.setText(nameString);
-
-        String categoryString = currentNewsItem.getCategory();
         category.setText(categoryString);
 
         return listItem;

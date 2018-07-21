@@ -32,7 +32,7 @@ public class CatalogActivity extends AppCompatActivity {
         final ListView listView = findViewById(R.id.list);
 
         Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl("https://content.guardianapis.com")
+                .baseUrl("https://content.guardianapis.com/")
                 .addConverterFactory(GsonConverterFactory.create());
 
         Retrofit retrofit = builder.build();

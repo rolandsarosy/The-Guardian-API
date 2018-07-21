@@ -9,7 +9,7 @@ import retrofit2.http.Query;
 
 public interface NewsClient {
 
-    @GET("/search")
+    @GET("search")
     Call<List<News>> getNews(
             // API key should always be constant
             @Query("api-key") String apiKey,

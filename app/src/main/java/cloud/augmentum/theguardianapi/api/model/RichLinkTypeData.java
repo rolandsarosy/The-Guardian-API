@@ -21,6 +21,8 @@ public class RichLinkTypeData {
     @Expose
     private String role;
 
+    public RichLinkTypeData(){}
+
     public String getUrl() {
         return url;
     }

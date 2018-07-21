@@ -9,6 +9,8 @@ public class News {
     @Expose
     private Response response;
 
+    public News(){}
+
     public Response getResponse() {
         return response;
     }

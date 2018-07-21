@@ -42,6 +42,8 @@ public class Result {
     @Expose
     private String pillarName;
 
+    public Result(){}
+
     public String getId() {
         return id;
     }

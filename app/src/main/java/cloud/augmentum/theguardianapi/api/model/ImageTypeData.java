@@ -39,6 +39,8 @@ public class ImageTypeData {
     @Expose
     private String imageType;
 
+    public ImageTypeData(){}
+
     public String getCaption() {
         return caption;
     }

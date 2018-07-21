@@ -18,6 +18,8 @@ public class TypeData {
     @Expose
     private Boolean isMaster;
 
+    public TypeData(){}
+
     public String getAspectRatio() {
         return aspectRatio;
     }

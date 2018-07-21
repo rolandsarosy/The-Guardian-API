@@ -9,6 +9,8 @@ public class TextTypeData {
     @Expose
     private String html;
 
+    public TextTypeData(){}
+
     public String getHtml() {
         return html;
     }

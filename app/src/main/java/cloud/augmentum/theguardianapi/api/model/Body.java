@@ -34,6 +34,8 @@ public class Body {
     @Expose
     private List<Element> elements = null;
 
+    public Body(){}
+
     public String getId() {
         return id;
     }

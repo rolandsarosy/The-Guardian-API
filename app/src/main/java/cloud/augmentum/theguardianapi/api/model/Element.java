@@ -22,6 +22,8 @@ public class Element {
     @Expose
     private ImageTypeData imageTypeData;
 
+    public Element(){}
+
     public String getType() {
         return type;
     }

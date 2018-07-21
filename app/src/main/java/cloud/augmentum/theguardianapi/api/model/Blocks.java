@@ -16,6 +16,8 @@ public class Blocks {
     @Expose
     private Integer totalBodyBlocks;
 
+    public Blocks(){}
+
     public List<Body> getBody() {
         return body;
     }

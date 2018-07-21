@@ -34,6 +34,8 @@ public class Response {
     @Expose
     private List<Result> results = null;
 
+    public Response(){}
+
     public String getStatus() {
         return status;
     }

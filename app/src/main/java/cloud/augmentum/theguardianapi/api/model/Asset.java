@@ -18,6 +18,8 @@ public class Asset {
     @Expose
     private TypeData typeData;
 
+    public Asset(){}
+
     public String getType() {
         return type;
     }

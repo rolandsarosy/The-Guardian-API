@@ -41,14 +41,16 @@ public class CatalogActivity extends AppCompatActivity {
         NewsClient client = retrofit.create(NewsClient.class);
         Call<News> call = client.getBaseJson(API_KEY, API_REQUEST_TYPE, API_BLOCK_TYPE);
 
+        // Call the endpoint and respond to failure and success events
         call.enqueue(new Callback<News>() {
             @Override
             public void onResponse(Call<News> call, Response<News> response) {
                 List<Result> results = response.body().getResponse().getResults();
 
-                listView.setAdapter(new NewsAdapter(CatalogActivity.this, results));
-
-                Toast.makeText(CatalogActivity.this, "it worked?", Toast.LENGTH_SHORT).show();
+                // Set the adapter and remove the divider between the list items
+                NewsAdapter adapter = new NewsAdapter(CatalogActivity.this, results);
+                listView.setDividerHeight(0);
+                listView.setAdapter(adapter);
             }
 
             @Override

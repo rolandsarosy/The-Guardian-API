@@ -23,7 +23,7 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/outline_search_white_18"
+        android:src="@drawable/outline_refresh_white_24"
         app:layout_anchor="@id/bar" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

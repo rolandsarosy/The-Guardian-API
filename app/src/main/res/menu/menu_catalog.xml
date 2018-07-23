@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- Compiler warning about the 'app:' namespace usage instead of 'android:' should be ignored -->
+    <!-- Since the bottom action bar won't support the 'android:' version. The items will appear -->
+    <!-- In the overflow menu regardless of the setting -->
+
+    <item
+        android:id="@+id/catalog_menu_sort"
+        android:icon="@drawable/outline_sort_white_24"
+        android:title="@string/catalog_label_sort"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/catalog_menu_search"
+        android:icon="@drawable/outline_search_white_24"
+        android:title="@string/catalog_label_search"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/catalog_menu_home"
+        android:icon="@drawable/outline_home_white_24"
+        android:title="@string/catalog_label_home"
+        app:showAsAction="ifRoom"/>
+
+
+</menu>

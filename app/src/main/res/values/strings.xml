@@ -3,4 +3,9 @@
 
     <!-- Button label in a single list item [CHARLIMIT=13]-->
     <string name="list_item_label_learn_more">learn more</string>
+
+    <!-- Bottom app bar labels for individual actions [CHARLIMIT=10]-->
+    <string name="catalog_label_search">Search</string>
+    <string name="catalog_label_sort">Sort by</string>
+    <string name="catalog_label_home">Home</string>
 </resources>

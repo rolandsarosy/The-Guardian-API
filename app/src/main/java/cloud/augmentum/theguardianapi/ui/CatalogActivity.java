@@ -2,8 +2,12 @@ package cloud.augmentum.theguardianapi.ui;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.android.material.bottomappbar.BottomAppBar;
 
 import java.util.List;
 
@@ -30,8 +34,12 @@ public class CatalogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
         
-        // Find reference to the ListView we'll populate
+        // Find reference to the ListView and bottom app bars
         final ListView listView = findViewById(R.id.list);
+        BottomAppBar bar = findViewById(R.id.bar);
+
+        // Setup the bottom app bar to behave as a regular action bar
+        setSupportActionBar(bar);
 
         // Create the Retrofit Client
         Retrofit.Builder builder = new Retrofit.Builder()
@@ -63,4 +71,27 @@ public class CatalogActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_catalog, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.catalog_menu_search:
+                // Do stuff
+                return true;
+            case R.id.catalog_menu_sort:
+                // Do stuff
+                return true;
+            case R.id.catalog_menu_home:
+                // Do stuff
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

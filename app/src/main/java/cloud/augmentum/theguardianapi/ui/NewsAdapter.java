@@ -38,10 +38,10 @@ public class NewsAdapter extends ArrayAdapter<Result> {
         Result currentNews = newsList.get(position);
 
         // Find reference to the views in the list item
-        TextView name = listItem.findViewById(R.id.article_name);
-        TextView category = listItem.findViewById(R.id.article_category);
-        final TextView body = listItem.findViewById(R.id.article_body);
-        Button learnMoreButton = listItem.findViewById(R.id.article_button);
+        TextView name = listItem.findViewById(R.id.list_item_header);
+        TextView category = listItem.findViewById(R.id.list_item_category);
+        final TextView body = listItem.findViewById(R.id.list_item_body);
+        Button learnMoreButton = listItem.findViewById(R.id.list_item_btn);
 
         // Parse the body text of the current news item
         List<Body> currentNewsBodyElements = currentNews.getBlocks().getBody();

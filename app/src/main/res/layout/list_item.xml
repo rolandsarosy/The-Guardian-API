@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/card_view"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="8dp"
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/article_name"
+            android:id="@+id/list_item_header"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -28,7 +28,7 @@
             android:layout_marginTop="24dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="#DE000000"
-            app:layout_constraintBottom_toTopOf="@+id/article_category"
+            app:layout_constraintBottom_toTopOf="@+id/list_item_category"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -36,21 +36,35 @@
             tools:text="Novichok poisonings: victim Charlie Rowley released from hospital" />
 
         <TextView
-            android:id="@+id/article_category"
+            android:id="@+id/list_item_category"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="#8A000000"
-            app:layout_constraintBottom_toTopOf="@+id/article_body"
+            app:layout_constraintBottom_toTopOf="@+id/list_item_div"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/article_name"
+            app:layout_constraintTop_toBottomOf="@+id/list_item_header"
             tools:text="UK news" />
 
         <TextView
-            android:id="@+id/article_body"
+            android:id="@+id/list_item_div"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="#d3d3d3"
+            android:lineSpacingExtra="8dp"
+            app:layout_constraintBottom_toTopOf="@id/list_item_body"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/list_item_category" />
+
+        <TextView
+            android:id="@+id/list_item_body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -59,14 +73,14 @@
             android:lineSpacingExtra="8dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="#DE000000"
-            app:layout_constraintBottom_toTopOf="@+id/article_button"
+            app:layout_constraintBottom_toTopOf="@+id/list_item_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/article_category"
+            app:layout_constraintTop_toBottomOf="@+id/list_item_category"
             tools:text="A Wiltshire man poisoned with a military-grade nerve agent has been discharged from hospital 12 days after his partner died after exposure... " />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/article_button"
+            android:id="@+id/list_item_btn"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,13 +88,13 @@
             android:layout_marginTop="16dp"
             android:minWidth="0dp"
             android:paddingEnd="8dp"
-            app:backgroundTint="#ffffff"
             android:paddingStart="8dp"
             android:text="@string/list_item_label_learn_more"
             android:textColor="#DE000000"
+            app:backgroundTint="#ffffff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/article_body" />
+            app:layout_constraintTop_toBottomOf="@+id/list_item_body" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

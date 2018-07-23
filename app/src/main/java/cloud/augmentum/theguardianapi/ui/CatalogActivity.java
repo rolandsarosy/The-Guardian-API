@@ -29,9 +29,11 @@ public class CatalogActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
-
+        
+        // Find reference to the ListView we'll populate
         final ListView listView = findViewById(R.id.list);
 
+        // Create the Retrofit Client
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl("https://content.guardianapis.com/")
                 .addConverterFactory(GsonConverterFactory.create());
@@ -45,6 +47,7 @@ public class CatalogActivity extends AppCompatActivity {
         call.enqueue(new Callback<News>() {
             @Override
             public void onResponse(Call<News> call, Response<News> response) {
+                // Parse the response to match the List of JSONArray objects
                 List<Result> results = response.body().getResponse().getResults();
 
                 // Set the adapter and remove the divider between the list items
@@ -55,7 +58,7 @@ public class CatalogActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<News> call, Throwable t) {
-                Toast.makeText(CatalogActivity.this, "fuck", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CatalogActivity.this, "There was a problem with the network call", Toast.LENGTH_SHORT).show();
                 Log.e("The throwable is", t.toString());
             }
         });

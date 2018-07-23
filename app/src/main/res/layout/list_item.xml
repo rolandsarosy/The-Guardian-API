@@ -16,6 +16,7 @@
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/list_item_transition_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

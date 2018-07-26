@@ -55,7 +55,8 @@ public class NewsAdapter extends ArrayAdapter<Result> {
         // The full body text will be used when the user has expanded the CardView
         final String bodyTextFull = currentNewsBody.getBodyTextSummary();
         // The summary of the body text will be used when the CardView is retracted
-        final String bodyTextSummary = bodyTextFull.substring(0, Math.min(bodyTextFull.length(), CatalogActivity.BODY_MAX_TEXT_LENGHT)).concat("...");
+        final String bodyTextSummaryShort = bodyTextFull.substring(0, Math.min(bodyTextFull.length(), CatalogActivity.BODY_SUMMARY_TEXT_LENGTH_SHORT)).concat("...");
+        final String bodyTextSummaryLong = bodyTextFull.substring(0, Math.min(bodyTextFull.length(), CatalogActivity.BODY_SUMMARY_TEXT_LENGTH_LONG)).concat("...");
 
         // Parse the name and category for the current news item
         String nameString = currentNews.getWebTitle();
@@ -64,16 +65,16 @@ public class NewsAdapter extends ArrayAdapter<Result> {
         // Set the parsed values
         name.setText(nameString);
         category.setText(categoryString);
-        body.setText(bodyTextSummary);
+        body.setText(bodyTextSummaryShort);
 
         // onClickListener for the button to extend and retract the CardView 
         learnMoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isExtended){
-                    retractCardView(body, bodyTextSummary);
+                    retractCardView(body, bodyTextSummaryShort);
                 } else {
-                    extendCardView(body, bodyTextFull);
+                    extendCardView(body, bodyTextSummaryLong);
                 }
             }
         });
@@ -83,7 +84,7 @@ public class NewsAdapter extends ArrayAdapter<Result> {
             @Override
             public void onClick(View view) {
                 if (isExtended){
-                    retractCardView(body, bodyTextSummary);
+                    retractCardView(body, bodyTextSummaryShort);
                 }
             }
         });

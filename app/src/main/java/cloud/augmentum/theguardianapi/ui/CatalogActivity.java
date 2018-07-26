@@ -24,7 +24,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CatalogActivity extends AppCompatActivity {
 
-    public static final int BODY_MAX_TEXT_LENGHT = 150;
+    public static final int BODY_SUMMARY_TEXT_LENGTH_SHORT = 150;
+    public static final int BODY_SUMMARY_TEXT_LENGTH_LONG = 400;
     public static final String API_KEY = "324ed141-8ecd-4f25-be0a-872bd02c6a8a";
     public static final String API_REQUEST_TYPE = "article";
     public static final String API_BLOCK_TYPE = "body";

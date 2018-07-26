@@ -41,6 +41,7 @@ Planned features
 - Caching and offline mode
 - Room database layer
 - Proper search and query options *(currently being implemented)*
+- Detect no internet connection and display relevant information *(currently being implemented)*
 - Transitions (aka animations)
 - Option to save news items
 

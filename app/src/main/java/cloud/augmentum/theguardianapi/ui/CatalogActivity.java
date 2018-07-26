@@ -16,11 +16,10 @@ import cloud.augmentum.theguardianapi.R;
 import cloud.augmentum.theguardianapi.api.model.News;
 import cloud.augmentum.theguardianapi.api.model.Result;
 import cloud.augmentum.theguardianapi.api.service.NewsClient;
+import cloud.augmentum.theguardianapi.api.service.ServiceGenerator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CatalogActivity extends AppCompatActivity {
 
@@ -42,14 +41,9 @@ public class CatalogActivity extends AppCompatActivity {
         // Setup the bottom app bar to behave as a regular action bar
         setSupportActionBar(bar);
 
-        // Create the Retrofit Client
-        Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl("https://content.guardianapis.com/")
-                .addConverterFactory(GsonConverterFactory.create());
+        // Create a Retrofit client with the ServiceGenerator class
+        NewsClient client = ServiceGenerator.createService(NewsClient.class);
 
-        Retrofit retrofit = builder.build();
-
-        NewsClient client = retrofit.create(NewsClient.class);
         Call<News> call = client.getBaseJson(API_KEY, API_REQUEST_TYPE, API_BLOCK_TYPE);
 
         // Call the endpoint and respond to failure and success events

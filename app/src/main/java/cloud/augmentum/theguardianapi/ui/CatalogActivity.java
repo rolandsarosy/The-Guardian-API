@@ -1,10 +1,16 @@
 package cloud.augmentum.theguardianapi.ui;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
@@ -33,38 +39,14 @@ public class CatalogActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
-        
-        // Find reference to the ListView and bottom app bars
-        final ListView listView = findViewById(R.id.list);
-        BottomAppBar bar = findViewById(R.id.bar);
 
-        // Setup the bottom app bar to behave as a regular action bar
+        // Find reference to the bottom app bar and set it up as a regular app bar
+        BottomAppBar bar = findViewById(R.id.bar);
         setSupportActionBar(bar);
 
-        // Create a Retrofit client with the ServiceGenerator class
-        NewsClient client = ServiceGenerator.createService(NewsClient.class);
+        // Get the current network connectivity info and call make the base call accordingly
+        makeInitialCallWithConnectivityCheck();
 
-        Call<News> call = client.getBaseJson(API_KEY, API_REQUEST_TYPE, API_BLOCK_TYPE);
-
-        // Call the endpoint and respond to failure and success events
-        call.enqueue(new Callback<News>() {
-            @Override
-            public void onResponse(Call<News> call, Response<News> response) {
-                // Parse the response to match the List of JSONArray objects
-                List<Result> results = response.body().getResponse().getResults();
-
-                // Set the adapter and remove the divider between the list items
-                NewsAdapter adapter = new NewsAdapter(CatalogActivity.this, results);
-                listView.setDividerHeight(0);
-                listView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onFailure(Call<News> call, Throwable t) {
-                Toast.makeText(CatalogActivity.this, "There was a problem with the network call", Toast.LENGTH_SHORT).show();
-                Log.e("The throwable is", t.toString());
-            }
-        });
     }
 
     @Override
@@ -87,6 +69,69 @@ public class CatalogActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Helper method the get the device's current connection information and make the base
+     * network call accordingly
+     */
+    private void makeInitialCallWithConnectivityCheck(){
+        // Create a connectivity manager and get the active network information
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connManager.getActiveNetworkInfo();
+
+        if (networkInfo != null && networkInfo.isConnected()){
+            makeBaseNetworkCall();
+        } else {
+            TextView noConnectionTextView = findViewById(R.id.catalog_hint_no_available_network_connection);
+            noConnectionTextView.setVisibility(View.VISIBLE);
+            hideSpinnerFromCatalog();
+        }
+    }
+
+    /**
+     * Helper method that calls the base endpoint with no special query parameters
+     * whatsoever and populates the list with the result
+     */
+    private void makeBaseNetworkCall(){
+        final ListView listView = findViewById(R.id.list);
+
+        // Create a Retrofit client with the ServiceGenerator class
+        NewsClient client = ServiceGenerator.createService(NewsClient.class);
+
+        Call<News> call = client.getBaseJson(API_KEY, API_REQUEST_TYPE, API_BLOCK_TYPE);
+
+        // Call the endpoint and respond to failure and success events
+        call.enqueue(new Callback<News>() {
+            @Override
+            public void onResponse(Call<News> call, Response<News> response) {
+                // Parse the response to match the List of JSONArray objects
+                List<Result> results = response.body().getResponse().getResults();
+
+                hideSpinnerFromCatalog();
+
+                // Set the adapter and remove the divider between the list items
+                NewsAdapter adapter = new NewsAdapter(CatalogActivity.this, results);
+                listView.setDividerHeight(0);
+                listView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onFailure(Call<News> call, Throwable t) {
+                hideSpinnerFromCatalog();
+
+                Toast.makeText(CatalogActivity.this, "There was a problem with the network call", Toast.LENGTH_SHORT).show();
+                Log.e("The throwable is", t.toString());
+            }
+        });
+    }
+
+    /**
+     * Simple helper method to hide the loading spinner from the catalog activity
+     */
+    private void hideSpinnerFromCatalog(){
+        ProgressBar spinner = findViewById(R.id.loading_spinner);
+        spinner.setVisibility(View.GONE);
     }
 
 }

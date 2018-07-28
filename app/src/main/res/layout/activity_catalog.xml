@@ -4,12 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Other components and views -->
+    <!-- ListView that is going to be populated with news items -->
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <!-- ProgressBar to indicate that there is content loading at the moment-->
+    <ProgressBar
+        android:id="@+id/loading_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+    <!-- TextView to show the user that they don't have an available network connection-->
+    <TextView
+        android:id="@+id/catalog_hint_no_available_network_connection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/catalog_hint_no_network_connection"
+        android:visibility="gone"/>
+
+    <!-- Bottom action bar -->
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bar"
         style="@style/Widget.MaterialComponents.BottomAppBar"
@@ -19,6 +36,7 @@
         app:backgroundTint="@color/primaryDarkColor"
         app:fabAlignmentMode="end" />
 
+    <!-- Bottom action bar cradled FAB -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"

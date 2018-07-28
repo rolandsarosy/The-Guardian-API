@@ -8,4 +8,7 @@
     <string name="catalog_label_search">Search</string>
     <string name="catalog_label_sort">Sort by</string>
     <string name="catalog_label_home">Home</string>
+
+    <!-- Catalog activity hint that informs the user that they don't have an active connection [CHARLIMIT=NONE] [PLACEHOLDER]-->
+    <string name="catalog_hint_no_network_connection">No internet connection available</string>
 </resources>

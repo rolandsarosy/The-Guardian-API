@@ -34,6 +34,7 @@ Please check back in a few days for a (more) completed list.*
 - API service
 - Material Components CardView layout
 - Bottom app bar with menu items
+- Detect network states and respond accordingly
 
 Planned features
 ----------------------------------
@@ -41,8 +42,7 @@ Planned features
 - Caching and offline mode
 - Room database layer
 - Proper search and query options *(currently being implemented)*
-- Detect no internet connection and display relevant information *(currently being implemented)*
-- Transitions (aka animations)
+- Improved transitions
 - Option to save news items
 
 Getting Started

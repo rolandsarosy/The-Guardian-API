@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_menu_news"
+            android:icon="@drawable/round_supervisor_account_black_24"
+            android:title="News" />
+
+        <item
+            android:id="@+id/drawer_menu_opinion"
+            android:icon="@drawable/round_record_voice_over_black_24"
+            android:title="Opinion" />
+
+        <item
+            android:id="@+id/drawer_menu_sport"
+            android:icon="@drawable/round_directions_bike_black_24"
+            android:title="Sport" />
+
+        <item
+            android:id="@+id/drawer_menu_culture"
+            android:icon="@drawable/round_style_black_24"
+            android:title="Culture" />
+
+        <item
+            android:id="@+id/drawer_menu_lifestyle"
+            android:icon="@drawable/round_face_black_24"
+            android:title="Lifestyle" />
+    </group>
+</menu>

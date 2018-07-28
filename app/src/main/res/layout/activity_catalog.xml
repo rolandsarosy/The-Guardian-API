@@ -1,47 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- ListView that is going to be populated with news items -->
-    <ListView
-        android:id="@+id/list"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
 
-    <!-- ProgressBar to indicate that there is content loading at the moment-->
-    <ProgressBar
-        android:id="@+id/loading_spinner"
+        <!-- ListView that is going to be populated with news items -->
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- ProgressBar to indicate that there is content loading at the moment-->
+        <ProgressBar
+            android:id="@+id/loading_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <!-- TextView to show the user that they don't have an available network connection-->
+        <TextView
+            android:id="@+id/catalog_hint_no_available_network_connection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/catalog_hint_no_network_connection"
+            android:visibility="gone" />
+
+        <!-- Bottom action bar -->
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bar"
+            style="@style/Widget.MaterialComponents.BottomAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:backgroundTint="@color/primaryDarkColor"
+            app:fabAlignmentMode="end" />
+
+        <!-- Bottom action bar cradled FAB -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/outline_refresh_white_24"
+            app:layout_anchor="@id/bar" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        android:layout_gravity="bottom|start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/menu_drawer" />
 
-    <!-- TextView to show the user that they don't have an available network connection-->
-    <TextView
-        android:id="@+id/catalog_hint_no_available_network_connection"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/catalog_hint_no_network_connection"
-        android:visibility="gone"/>
-
-    <!-- Bottom action bar -->
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bar"
-        style="@style/Widget.MaterialComponents.BottomAppBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:backgroundTint="@color/primaryDarkColor"
-        app:fabAlignmentMode="end" />
-
-    <!-- Bottom action bar cradled FAB -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/outline_refresh_white_24"
-        app:layout_anchor="@id/bar" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

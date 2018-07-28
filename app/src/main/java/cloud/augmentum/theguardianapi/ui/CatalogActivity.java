@@ -14,10 +14,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import cloud.augmentum.theguardianapi.R;
 import cloud.augmentum.theguardianapi.api.model.News;
 import cloud.augmentum.theguardianapi.api.model.Result;
@@ -34,15 +36,20 @@ public class CatalogActivity extends AppCompatActivity {
     public static final String API_KEY = "324ed141-8ecd-4f25-be0a-872bd02c6a8a";
     public static final String API_REQUEST_TYPE = "article";
     public static final String API_BLOCK_TYPE = "body";
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalog);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
 
         // Find reference to the bottom app bar and set it up as a regular app bar
         BottomAppBar bar = findViewById(R.id.bar);
         setSupportActionBar(bar);
+
+        // Create and setup the navigation drawer
+        onCreateNavigationDrawer();
 
         // Get the current network connectivity info and call make the base call accordingly
         makeInitialCallWithConnectivityCheck();
@@ -69,6 +76,38 @@ public class CatalogActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Helper method that sets onClickListeners on the drawer and sets its functionality
+     */
+    private void onCreateNavigationDrawer(){
+        NavigationView navView = findViewById(R.id.navigation_view);
+        navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                menuItem.setChecked(true);
+                mDrawerLayout.closeDrawers();
+                switch (menuItem.getItemId()){
+                    case R.id.drawer_menu_news:
+                        // Do stuff
+                        return true;
+                    case R.id.drawer_menu_opinion:
+                        // Do stuff
+                        return true;
+                    case R.id.drawer_menu_sport:
+                        // Do stuff
+                        return true;
+                    case R.id.drawer_menu_culture:
+                        // Do stuff
+                        return true;
+                    case R.id.drawer_menu_lifestyle:
+                        // Do stuff
+                        return true;
+                }
+                return true;
+            }
+        });
     }
 
     /**

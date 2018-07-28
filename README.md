@@ -35,6 +35,7 @@ Please check back in a few days for a (more) completed list.*
 - Material Components CardView layout
 - Bottom app bar with menu items
 - Detect network states and respond accordingly
+- Navigation drawer to let the user select specific topics of news items
 
 Planned features
 ----------------------------------
